@@ -8,10 +8,11 @@ fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     method: "POST",
     headers: { 
         "Authorization": `tma ${the_init_data}`,
-        "Content-Type": "application/json"
+        // "Content-Type": "application/json",
+        "Content-Type": "plain/text"
     },
     body: `tma ${the_init_data}`,
-    //body: JSON.stringify({ tma: window.Telegram.WebApp.initData }),
+    // body: JSON.stringify({ tma: window.Telegram.WebApp.initData }),
 })
 .then(response => response.json()) 
 .then(json => console.log(json));
