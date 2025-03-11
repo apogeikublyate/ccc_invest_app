@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5001/api";
+const apiUrl = "https://localhost:5010/api";
 const the_init_data = window.Telegram.WebApp.initData;
 console.log('init_data=' + the_init_data);
 
