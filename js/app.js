@@ -11,7 +11,7 @@ fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
         // "Content-Type": "application/json",
         "Content-Type": "plain/text"
     },
-    body: the_init_data,
+    body: `tma ${the_init_data}`,
     // body: JSON.stringify({ tma: window.Telegram.WebApp.initData }),
 })
 .then(response => response.json()) 
