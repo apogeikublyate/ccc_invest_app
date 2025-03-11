@@ -6,7 +6,10 @@ console.log('init_data=' + the_init_data);
 fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     mode: 'no-cors',
     method: "POST",
-    headers: { "Authorization": `tma ${the_init_data}` },
+    headers: { 
+        "Authorization": `tma ${the_init_data}`,
+        "Content-Type": "application/json"
+    },
     body: JSON.stringify({ tma: window.Telegram.WebApp.initData }),
 })
 .then(response => response.json()) 
