@@ -1,5 +1,8 @@
 const apiUrl = "https://localhost:5010";
-const the_init_data = window.Telegram.WebApp.initData;
+let the_init_data = window.Telegram.WebApp.initData;
+
+// Устанавливаем значение, которое планируем отправить на бэк
+document.getElementById('tg_initData_value').value = `tma ${the_init_data}`;
 
 // Шаг1. Регистрация или вход
 fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
@@ -10,9 +13,6 @@ fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     },
     body: `tma ${the_init_data}`,
 })
-.then(response => response.json()) 
-.then(json => console.log(json));
+.then(response => document.getElementById('back_answer_value').value = response)
+;
 
-// Надо на основной форме сделать 2 текстовых поля:
-// 1 - для вывода отправялемой информации
-// 2 - для полученного от сервера ответа
