@@ -13,9 +13,10 @@ let response = await fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     },
     body: `tma ${the_init_data}`
 });
+
 if (response.ok) {
   let text = await response.text();
-    document.getElementById('back_answer_value').value = text
+    document.getElementById('back_answer_value').value = text;
 } else {
-  alert("Ошибка:" + response.status);
+    document.getElementById('back_answer_value').value = `{response.status}`;
 }
