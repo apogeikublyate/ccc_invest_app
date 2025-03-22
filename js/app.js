@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     requestBodyEl.textContent = requestBody;
 
     try {
-        const response = await fetch('https://localhost:5010/Account/LoginByTelegramUserInfo', {
+        const response = await fetch('http://localhost:5010/Account/LoginByTelegramUserInfo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'text/plain'
