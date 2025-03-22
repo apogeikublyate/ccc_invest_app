@@ -2,7 +2,10 @@ const apiUrl = "http://localhost:5010";
 let the_init_data = window.Telegram.WebApp.initData;
 
 // Устанавливаем значение, которое планируем отправить на бэк
-document.getElementById('tg_initData_value').value = `tma ${the_init_data}`;
+const initDataField = document.getElementById('tg_initData_value');
+const resultBackAnswerField = document.getElementById('back_answer_value');
+initDataField.value = `tma ${the_init_data}`;
+resultBackAnswerField.value = 'Запроса еще не было';
 
 // Шаг1. Регистрация или вход
 let response = await fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
@@ -15,8 +18,8 @@ let response = await fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
 });
 
 if (response.ok) {
-  let text = await response.text();
-    document.getElementById('back_answer_value').innerText = text;
+  let textRes = await response.text();
+    resultBackAnswerField.value = textRes;
 } else {
-    document.getElementById('back_answer_value').innerText = `{response.status}`;
+    resultBackAnswerField.value = `{response.status}`;
 }
