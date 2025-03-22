@@ -13,6 +13,7 @@ fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     },
     body: `tma ${the_init_data}`,
 })
+.then(response => response.json()) 
 .then(response => document.getElementById('back_answer_value').value = response)
 ;
 
