@@ -1,26 +1,28 @@
-const apiUrl = "https://localhost:5010";
-let the_init_data = window.Telegram.WebApp.initData;
+document.addEventListener('DOMContentLoaded', async () => {
+    const requestBodyEl = document.getElementById('requestBody');
+    const responseBodyEl = document.getElementById('responseBody');
 
-// Устанавливаем значение, которое планируем отправить на бэк
-document.getElementById('tg_initData_value').value = 'кек';
-document.getElementById('back_answer_value').value = 'puk';
-initDataField.value = `tma ${the_init_data}`;
+    // Получаем initData от Telegram
+    const initData = Telegram.WebApp.initData || "<нет initData>";
 
-// Шаг1. Регистрация или вход
-let response = await fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
-    mode: 'no-cors',
-    method: "POST",
-    headers: {
-        "Content-Type": "plain/text"
-    },
-    body: `tma ${the_init_data}`
+    // Формируем тело запроса, как ожидает бэкенд
+    const requestBody = `tma ${initData}`;
+
+    // Показываем тело запроса на странице
+    requestBodyEl.textContent = requestBody;
+
+    try {
+        const response = await fetch('https://localhost:5010/Account/LoginByTelegramUserInfo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain'
+            },
+            body: requestBody
+        });
+
+        const responseText = await response.text();
+        responseBodyEl.textContent = responseText;
+    } catch (err) {
+        responseBodyEl.textContent = `Ошибка запроса: ${err.message}`;
+    }
 });
-
-/*
-if (response.ok) {
-  let textRes = await response.text();
-    resultBackAnswerField.value = textRes;
-} else {
-    resultBackAnswerField.value = `{response.status}`;
-}
-*/
