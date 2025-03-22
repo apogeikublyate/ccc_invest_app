@@ -23,6 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const responseText = await response.text();
         responseBodyEl.textContent = responseText;
     } catch (err) {
-        responseBodyEl.textContent = `Ошибка запроса: ${err.message}`;
+        responseBodyEl.textContent = `Ошибка запроса: ${err.toString()}`;
     }
 });
