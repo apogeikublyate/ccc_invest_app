@@ -5,15 +5,17 @@ let the_init_data = window.Telegram.WebApp.initData;
 document.getElementById('tg_initData_value').value = `tma ${the_init_data}`;
 
 // Шаг1. Регистрация или вход
-fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
+let response = await fetch(`${apiUrl}/Account/LoginByTelegramUserInfo`, {
     mode: 'no-cors',
     method: "POST",
     headers: {
         "Content-Type": "plain/text"
     },
-    body: `tma ${the_init_data}`,
-})
-.then((response) => response.text())
-.then((text) => {
-      document.getElementById('back_answer_value').value = text;
-    });
+    body: `tma ${the_init_data}`
+});
+if (response.ok) {
+  let text = await response.text();
+    document.getElementById('back_answer_value').value = text
+} else {
+  alert("Ошибка:" + response.status);
+}
