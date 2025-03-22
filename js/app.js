@@ -1,4 +1,4 @@
-const apiUrl = "https://localhost:5010";
+const apiUrl = "http://localhost:5010";
 let the_init_data = window.Telegram.WebApp.initData;
 
 // Устанавливаем значение, которое планируем отправить на бэк
