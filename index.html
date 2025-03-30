@@ -1,3 +1,5 @@
+<!-- FILE: index.html -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,24 +10,39 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>CCC Invest</title>
     <script>
-      // Скрипт для установки начальной темы до загрузки React
+      // --- ИЗМЕНЕННЫЙ СКРИПТ ---
+      // Скрипт для установки ЯВНОЙ темы до загрузки React
       (function() {
         try {
-          const theme = localStorage.getItem('theme');
-          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          // Используем новый ключ для ПРЕДПОЧТЕНИЯ пользователя
+          const preference = localStorage.getItem('themePreference');
+          console.log('[Initial Theme Script] User preference:', preference);
+
+          // Применяем класс ТОЛЬКО если выбрано 'light' или 'dark' явно
+          if (preference === 'dark') {
             document.documentElement.classList.add('dark');
-            console.log('Initial theme set to dark.');
-          } else {
+            console.log('[Initial Theme Script] Explicit dark preference found.');
+          } else if (preference === 'light') {
             document.documentElement.classList.remove('dark');
-            console.log('Initial theme set to light.');
+            console.log('[Initial Theme Script] Explicit light preference found.');
+          } else {
+            // Если 'system' или не установлено, НИЧЕГО не делаем здесь.
+            // React ThemeManager определит тему на основе tg.colorScheme.
+            // Можно оставить fallback на prefers-color-scheme, но он может быть неточным
+            // до инициализации TG. Лучше положиться на ThemeManager.
+             console.log('[Initial Theme Script] No explicit preference or "system". Deferring to ThemeManager.');
+             // Опциональный fallback (менее надежный):
+             // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+             // if (prefersDark) document.documentElement.classList.add('dark');
           }
         } catch (e) {
-          console.error('Error setting initial theme:', e);
+          console.error('[Initial Theme Script] Error setting initial theme:', e);
         }
       })();
+      // --- КОНЕЦ ИЗМЕНЕНИЙ ---
     </script>
-    <script type="module" crossorigin src="/ccc_invest_app/assets/index-DYi_7UC3.js"></script>
-    <link rel="stylesheet" crossorigin href="/ccc_invest_app/assets/index-BC_WCWYj.css">
+    <script type="module" crossorigin src="/ccc_invest_app/assets/index-DzjvmE_Q.js"></script>
+    <link rel="stylesheet" crossorigin href="/ccc_invest_app/assets/index-CvU5RZT8.css">
   </head>
   <body>
     <div id="root"></div>

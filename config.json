@@ -1,5 +1,5 @@
 {
   "apiUrl": "http://localhost:5010",
   "useMock": false,
-  "mockInitData": "without tma"
+  "mockInitData": "init.data без tma в режиме true"
 }
