@@ -1,5 +1,5 @@
 {
-  "apiUrl": "http://localhost:5010",
+  "apiUrl": "http://194.246.81.176:5011",
   "useMock": false,
   "mockInitData": ""
 }
