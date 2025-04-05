@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "apiUrl": "http://localhost:5010",
-=======
   "apiUrl": "https://194.246.81.176.sslip.io",
->>>>>>> 31b646a (init: начальная заливка проекта)
   "useMock": false,
   "mockInitData": ""
 }
