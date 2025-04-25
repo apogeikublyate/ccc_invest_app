@@ -9,40 +9,37 @@
     <!-- Telegram WebApp Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>CCC Invest</title>
+    <!-- --- ИЗМЕНЕНИЕ: Возвращаем улучшенный скрипт --- -->
     <script>
-      // --- ИЗМЕНЕННЫЙ СКРИПТ ---
-      // Скрипт для установки ЯВНОЙ темы до загрузки React
+      // Скрипт для установки ЯВНОЙ или СИСТЕМНОЙ темы до загрузки React
       (function() {
         try {
-          // Используем новый ключ для ПРЕДПОЧТЕНИЯ пользователя
           const preference = localStorage.getItem('themePreference');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           console.log('[Initial Theme Script] User preference:', preference);
+          console.log('[Initial Theme Script] System prefers dark:', systemPrefersDark);
 
-          // Применяем класс ТОЛЬКО если выбрано 'light' или 'dark' явно
           if (preference === 'dark') {
             document.documentElement.classList.add('dark');
             console.log('[Initial Theme Script] Explicit dark preference found.');
           } else if (preference === 'light') {
             document.documentElement.classList.remove('dark');
             console.log('[Initial Theme Script] Explicit light preference found.');
+          } else if ((preference === 'system' || preference === null) && systemPrefersDark) {
+            document.documentElement.classList.add('dark');
+            console.log('[Initial Theme Script] System preference is dark. Applying dark theme.');
           } else {
-            // Если 'system' или не установлено, НИЧЕГО не делаем здесь.
-            // React ThemeManager определит тему на основе tg.colorScheme.
-            // Можно оставить fallback на prefers-color-scheme, но он может быть неточным
-            // до инициализации TG. Лучше положиться на ThemeManager.
-             console.log('[Initial Theme Script] No explicit preference or "system". Deferring to ThemeManager.');
-             // Опциональный fallback (менее надежный):
-             // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-             // if (prefersDark) document.documentElement.classList.add('dark');
+             document.documentElement.classList.remove('dark');
+             console.log('[Initial Theme Script] System preference is light or no explicit preference. Applying light theme.');
           }
         } catch (e) {
           console.error('[Initial Theme Script] Error setting initial theme:', e);
         }
       })();
-      // --- КОНЕЦ ИЗМЕНЕНИЙ ---
     </script>
-    <script type="module" crossorigin src="./assets/index-B3vRYIAn.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BXpet3a2.css">
+    <!-- --- КОНЕЦ ИЗМЕНЕНИЯ --- -->
+    <script type="module" crossorigin src="./assets/index-CI1ZXyre.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CD1YPFy0.css">
   </head>
   <body>
     <div id="root"></div>
