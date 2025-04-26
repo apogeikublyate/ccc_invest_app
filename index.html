@@ -10,15 +10,13 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>CCC Invest</title>
     <script>
-      // --- ИЗМЕНЕННЫЙ СКРИПТ ---
       // Скрипт для установки ЯВНОЙ темы до загрузки React
       (function() {
         try {
-          // Используем новый ключ для ПРЕДПОЧТЕНИЯ пользователя
           const preference = localStorage.getItem('themePreference');
+          // logger недоступен здесь, используем console
           console.log('[Initial Theme Script] User preference:', preference);
 
-          // Применяем класс ТОЛЬКО если выбрано 'light' или 'dark' явно
           if (preference === 'dark') {
             document.documentElement.classList.add('dark');
             console.log('[Initial Theme Script] Explicit dark preference found.');
@@ -26,23 +24,15 @@
             document.documentElement.classList.remove('dark');
             console.log('[Initial Theme Script] Explicit light preference found.');
           } else {
-            // Если 'system' или не установлено, НИЧЕГО не делаем здесь.
-            // React ThemeManager определит тему на основе tg.colorScheme.
-            // Можно оставить fallback на prefers-color-scheme, но он может быть неточным
-            // до инициализации TG. Лучше положиться на ThemeManager.
              console.log('[Initial Theme Script] No explicit preference or "system". Deferring to ThemeManager.');
-             // Опциональный fallback (менее надежный):
-             // const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-             // if (prefersDark) document.documentElement.classList.add('dark');
           }
         } catch (e) {
           console.error('[Initial Theme Script] Error setting initial theme:', e);
         }
       })();
-      // --- КОНЕЦ ИЗМЕНЕНИЙ ---
     </script>
-    <script type="module" crossorigin src="./assets/index-B3vRYIAn.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BXpet3a2.css">
+    <script type="module" crossorigin src="./assets/index-DsJCp2Cg.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BRMf9_ND.css">
   </head>
   <body>
     <div id="root"></div>
