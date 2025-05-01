@@ -1,0 +1,47 @@
+<!-- FILE: index.html -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <!-- Telegram WebApp Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>CCC Invest</title>
+    <!-- --- ИЗМЕНЕНИЕ: Возвращаем улучшенный скрипт --- -->
+    <script>
+      // Скрипт для установки ЯВНОЙ или СИСТЕМНОЙ темы до загрузки React
+      (function() {
+        try {
+          const preference = localStorage.getItem('themePreference');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          console.log('[Initial Theme Script] User preference:', preference);
+          console.log('[Initial Theme Script] System prefers dark:', systemPrefersDark);
+
+          if (preference === 'dark') {
+            document.documentElement.classList.add('dark');
+            console.log('[Initial Theme Script] Explicit dark preference found.');
+          } else if (preference === 'light') {
+            document.documentElement.classList.remove('dark');
+            console.log('[Initial Theme Script] Explicit light preference found.');
+          } else if ((preference === 'system' || preference === null) && systemPrefersDark) {
+            document.documentElement.classList.add('dark');
+            console.log('[Initial Theme Script] System preference is dark. Applying dark theme.');
+          } else {
+             document.documentElement.classList.remove('dark');
+             console.log('[Initial Theme Script] System preference is light or no explicit preference. Applying light theme.');
+          }
+        } catch (e) {
+          console.error('[Initial Theme Script] Error setting initial theme:', e);
+        }
+      })();
+    </script>
+    <!-- --- КОНЕЦ ИЗМЕНЕНИЯ --- -->
+    <script type="module" crossorigin src="./assets/index-DaOL_DQ0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CD1YPFy0.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
