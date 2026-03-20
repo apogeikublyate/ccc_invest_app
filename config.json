@@ -1,5 +1,5 @@
 {
-  "apiUrl": "https://194.246.81.176.sslip.io",
+  "apiUrl": "https://194.246.81.176.sslip.io:8443/",
   "useMock": false,
   "mockInitData": "",
   "enableDebugLogging": false
